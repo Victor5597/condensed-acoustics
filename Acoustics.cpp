@@ -1,7 +1,4 @@
-// Acoustics.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -9,7 +6,7 @@
 #include <sstream>
 int main()
 {
-	int N = 100;
+	int N = 100;//Параметр дискретизации
 	double** P = new double*[N]();
 	for (size_t i = 0; i < N; i++)
 	{
@@ -19,7 +16,7 @@ int main()
 	{
 		for (int j = 0; j < N; j++)
 		{
-			P[i][j] = sin((j*j+i*i)/3);
+			P[i][j] = sin((j*j + i * i) / 3);
 		}
 	}
 	std::ofstream out;
@@ -31,7 +28,7 @@ int main()
 			for (size_t j = 0; j < N; j++)
 			{
 				std::string s = std::to_string(P[i][j]);
-				char const *buffer = s.c_str();
+				char const *buffer = s.c_str();//Очень трудно конвертировать double
 				out.write(buffer, strlen(buffer));
 				out.write(" ", 1);
 			}
@@ -40,7 +37,7 @@ int main()
 		out.close();
 	}
 	int i = system("python ./Plot.py");
-	std::cout << 1;
+	std::cout << i;
 	return 0;
 }
 
